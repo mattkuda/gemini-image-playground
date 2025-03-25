@@ -1,0 +1,90 @@
+PRD: Sketch-to-Image Demo App for Gemini Flash
+Project Name
+Sketch-to-Image AI Demo
+
+Purpose
+This app is a demo to showcase the Gemini 2.0 Flash image generation API. It highlights the model's ability to take multi-modal input—a user sketch or uploaded image, optional text instructions, and an art style—and generate a high-quality image output.
+
+The app is built for a content video targeted at developers, indie hackers, and AI enthusiasts.
+
+Key Features
+1. Canvas Drawing or Image Upload
+User can draw a black pencil sketch on a 300x300 canvas
+
+Alternatively, user can upload an image file (e.g., PNG or JPG)
+
+Only one input source will be used per generation (uploaded image overrides canvas)
+
+2. Additional Instructions Field
+A textarea allows users to add optional text for image guidance
+e.g. “Make it look like a fire-type Pokémon with wings”
+
+3. Art Style Selector
+A dropdown selector with predefined styles:
+
+Pokemon character
+
+Product ad
+
+Fantasy illustration
+
+Cyberpunk design
+
+Anime style
+
+Cartoon sketch
+
+Realistic portrait
+
+Pixel art
+
+Abstract concept
+
+4. Generate Button
+When clicked:
+
+Converts canvas or uploaded image to a Blob
+
+Sends POST request to backend with:
+
+Image
+
+Text instructions
+
+Selected art style
+
+Displays loading skeleton while waiting
+
+5. Image Result Display
+When response is received:
+
+Shows the generated image below the UI in a clean, centered layout
+
+If loading: shows a Skeleton placeholder
+
+Tech Stack
+Frontend: Next.js 15 + TypeScript
+
+UI Library: ShadCN (dark theme, Zinc palette)
+
+API Integration: Gemini Flash (Google AI API)
+
+Canvas Handling: HTML <canvas> for drawing with mouse
+
+Image Format: PNG or JPEG via canvas or file input
+
+User Flow
+User draws or uploads an image
+
+Adds optional instructions
+
+Selects an art style
+
+Clicks Generate Image
+
+App shows loading animation
+
+Final image is displayed
+
+Use Case
+This demo is used in a YouTube video that showcases Gemini Flash’s versatility in different creative applications. It acts as one of several demos in the video and should run smoothly with minimal input.
