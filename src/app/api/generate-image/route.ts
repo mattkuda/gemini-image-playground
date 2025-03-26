@@ -115,6 +115,9 @@ function generateArtStyle(artStyle: string) {
         case ART_STYLE.POKEMON_CHARACTER:
             return `a pokemon character in the style of the original artwork of the Pokemon anime. 
                 It should have an appropriate environment background, as it were a still frame from the show.`
+        case ART_STYLE.PRODUCT_PHOTO:
+            return `a realistic product photo. The product should be the main focus of the image.
+            Use a white background and studio lighting. The product should be in focus and the background should be blurred.`
         default:
             return artStyle
     }

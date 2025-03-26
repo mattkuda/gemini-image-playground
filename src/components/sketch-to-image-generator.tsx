@@ -11,18 +11,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Upload, Eraser, Loader2, Sparkles, AlertCircle, RefreshCw, Droplet, Undo } from "lucide-react"
 import { toast } from "sonner"
-import { ART_STYLE } from "../lib/utils"
-
-const artStyles = [
-  { value: ART_STYLE.POKEMON_CHARACTER, label: "Pokemon Character" },
-  { value: "product-ad", label: "Product Ad" },
-  { value: "anime-style", label: "Anime Style" },
-  { value: "pixel-art", label: "Pixel Art" },
-  { value: "realistic", label: "Realistic" },
-  { value: "chibi", label: "Chibi" },
-  { value: "watercolor", label: "Watercolor" },
-  { value: "sketch", label: "Sketch" },
-]
+import { ART_STYLE, ART_STYLE_OPTIONS } from "../lib/utils"
 
 const drawingColors = [
   { value: "#000000", label: "Black", tailwindClass: "bg-black" },
@@ -54,7 +43,7 @@ export default function SketchToImageGenerator() {
   console.log("🔄 Component render");
 
   const [isDrawing, setIsDrawing] = useState(false)
-  const [artStyle, setArtStyle] = useState("pokemon-character")
+  const [artStyle, setArtStyle] = useState<ART_STYLE>(ART_STYLE.POKEMON_CHARACTER)
   const [additionalInstructions, setAdditionalInstructions] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [results, setResults] = useState<string[]>([])
@@ -1129,14 +1118,14 @@ export default function SketchToImageGenerator() {
             <label htmlFor="art-style" className="text-sm font-medium">
               Art Style
             </label>
-            <Select value={artStyle} onValueChange={setArtStyle}>
+            <Select value={artStyle} onValueChange={(value) => setArtStyle(value as ART_STYLE)}>
               <SelectTrigger id="art-style">
                 <SelectValue placeholder="Select art style" />
               </SelectTrigger>
               <SelectContent>
-                {artStyles.map((style) => (
-                  <SelectItem key={style.value} value={style.value}>
-                    {style.label}
+                {ART_STYLE_OPTIONS.map((option) => (
+                  <SelectItem key={option.value} value={option.value}>
+                    {option.label}
                   </SelectItem>
                 ))}
               </SelectContent>
