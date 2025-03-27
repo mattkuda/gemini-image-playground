@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { GoogleGenerativeAI } from "@google/generative-ai"
-import { ART_STYLE } from "../../../lib/utils"
+import { generateArtStyle } from "../../../lib/utils"
 
 interface GenerateImageRequest {
     imageData: string
@@ -34,11 +34,12 @@ export async function POST(request: NextRequest) {
             )
         }
 
-        // Initialize the Google Generative AI client
+        // Initialize the Google Generative AI client   
         const genAI = new GoogleGenerativeAI(apiKey)
 
         // Format the prompt based on the art style and instructions
         const textPrompt = `Create an image in the following style: ${generateArtStyle(artStyle)}
+        If it's a sketch provided, assume the deisgn can be cleaned up and made more polished.
         ${instructions ? `. Additional instructions: ${instructions}` : ''}`
 
         // Get the Gemini model with image generation capabilities
@@ -46,12 +47,8 @@ export async function POST(request: NextRequest) {
             model: "gemini-2.0-flash-exp-image-generation",
             // Use as-is with type assertion since the SDK might not have updated types
             generationConfig: {
-                // temperature: 0.4,
-                // topP: 1,
-                // topK: 32,
-                // maxOutputTokens: 4096,
                 // @ts-expect-error - This is supported by the API but may not be in the types yet
-                // numberOfImages: 1,
+                // numberOfImages: 3,
                 responseModalities: ["Text", "Image"]
             },
         })
@@ -110,15 +107,4 @@ export async function POST(request: NextRequest) {
     }
 }
 
-function generateArtStyle(artStyle: string) {
-    switch (artStyle) {
-        case ART_STYLE.POKEMON_CHARACTER:
-            return `a pokemon character in the style of the original artwork of the Pokemon anime. 
-                It should have an appropriate environment background, as it were a still frame from the show.`
-        case ART_STYLE.PRODUCT_PHOTO:
-            return `a realistic product photo. The product should be the main focus of the image.
-            Use a white background and studio lighting. The product should be in focus and the background should be blurred.`
-        default:
-            return artStyle
-    }
-}
+
