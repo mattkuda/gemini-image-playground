@@ -8,18 +8,20 @@ export default function Home() {
         <div className="space-y-3 text-center pb-4">
           <div className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-zinc-800/50 border border-zinc-700/50 text-zinc-200 mb-2">
             <Sparkles className="w-3.5 h-3.5 mr-2 text-zinc-300" />
-            Powered by Gemini Flash
+            Powered by AI
           </div>
-          <h1 className="text-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-zinc-200 to-zinc-400">
+          <h1 className="text-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-zinc-50 to-zinc-200">
             Sketch to Image
           </h1>
-          <p className="text-muted-foreground max-w-lg mx-auto">
-            Draw a sketch or upload an image and watch as Gemini Flash transforms it into professional art
+          <p className="text-muted-foreground mx-auto">
+            Draw a sketch or upload an image and watch as AI transforms it into professional art
           </p>
         </div>
         <SketchToImageGenerator />
         <footer className="text-xs text-center text-muted-foreground mt-10">
-          <p>© {new Date().getFullYear()} Sketch to Image Generator | Built with Next.js and Gemini Flash</p>
+          <p>
+            © {new Date().getFullYear()} Sketch to Image Generator | Built with Next.js, GPT-4o, and Gemini Flash
+          </p>
         </footer>
       </div>
     </main>

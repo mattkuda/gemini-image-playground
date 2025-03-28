@@ -7,6 +7,7 @@ export function cn(...inputs: ClassValue[]) {
 
 export const enum ART_STYLE {
   POKEMON_CHARACTER = "Pokemon Character",
+  GHIBLI_ANIME = "Ghibli Anime",
   PRODUCT_PHOTO = "Product Photo",
   DESIGN_MOCKUP = "Design Mockup",
   YOUTUBE_THUMBNAIL = "YouTube Thumbnail",
@@ -17,12 +18,11 @@ export const enum ART_STYLE {
 export const ART_STYLE_OPTIONS = [
   { value: ART_STYLE.CLOTHING_MODEL, label: "Clothing Model" },
   { value: ART_STYLE.YOUTUBE_THUMBNAIL, label: "YouTube Thumbnail" },
+  { value: ART_STYLE.GHIBLI_ANIME, label: "Ghibli Anime" },
   { value: ART_STYLE.PRODUCT_PHOTO, label: "Product Photo" },
-  // { value: ART_STYLE.DESIGN_MOCKUP, label: "Design Mockup" },
-  { value: ART_STYLE.ALBUM_COVER, label: "Album Cover" },
+  // { value: ART_STYLE.ALBUM_COVER, label: "Album Cover" },
   { value: ART_STYLE.POKEMON_CHARACTER, label: "Pokemon Character" },
 ]
-
 export function generateArtStyle(artStyle: string) {
   switch (artStyle) {
     case ART_STYLE.POKEMON_CHARACTER:
@@ -30,8 +30,18 @@ export function generateArtStyle(artStyle: string) {
         Generate a character in the style of the original Pokémon anime. 
         The figure should resemble a unique, original Pokémon with distinct color patterns, elemental features (e.g., fire, water, electric), and a memorable silhouette. 
         The pose should be expressive and dynamic. 
-        Include an immersive environment as the background, such as a forest, mountain, or battlefield, matching the character’s type.
+        Include an immersive environment as the background, such as a forest, mountain, or battlefield, matching the character's type.
         The final image should look like a still frame from the TV show, with sharp outlines, rich saturation, and cel-shaded lighting.
+      `.trim()
+
+    case ART_STYLE.GHIBLI_ANIME:
+      return `
+        Create an image in the distinctive style of Studio Ghibli anime films.
+        Use soft, watercolor-like backgrounds with detailed natural elements like wind-swept grass, fluffy clouds, or enchanted forests.
+        Characters should have simple, expressive faces with large, emotive eyes and fluid, graceful movements.
+        Incorporate whimsical or fantastical elements that blend seamlessly with the natural world.
+        The color palette should feature gentle pastels with occasional vivid accents, creating a dreamy, nostalgic atmosphere.
+        The final image should evoke the magical realism and environmental themes characteristic of films like "Spirited Away" or "My Neighbor Totoro".
       `.trim()
 
     case ART_STYLE.PRODUCT_PHOTO:
@@ -47,7 +57,7 @@ export function generateArtStyle(artStyle: string) {
       return `
         Create a modern, polished design mockup based on the provided structure. 
         Use clean lines, professional layout conventions, and contemporary fonts. 
-        Simulate a UI/UX presentation you’d expect from a top-tier design agency. 
+        Simulate a UI/UX presentation you'd expect from a top-tier design agency. 
         If color themes or branding are detected, integrate them consistently across headers, buttons, and backgrounds.
         The layout should follow UX best practices with clear hierarchy, alignment, and white space.
         Show the design inside a device frame if appropriate (e.g., browser or phone screen).
@@ -65,7 +75,7 @@ export function generateArtStyle(artStyle: string) {
     case ART_STYLE.ALBUM_COVER:
       return `
     Generate a bold, stylized album cover for a fictional music album. 
-    The design should feel like professional cover art you’d find on Spotify or Apple Music. 
+    The design should feel like professional cover art you'd find on Spotify or Apple Music. 
     Use dramatic lighting, strong contrast, and a clear focal point in the composition. 
     Include abstract or surreal visual elements that reflect emotion, mood, or concept. 
     Optionally include a band or artist name and album title, styled tastefully in modern typography. 
